@@ -3,766 +3,770 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabrina Benford — CS Researcher</title>
+<title>Sabrina Benford — CS Researcher & Educator</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --plum:       #2d0a4e;
-    --plum-mid:   #4a1275;
-    --violet:     #7c3aed;
-    --lavender:   #a855f7;
-    --lilac:      #d8b4fe;
-    --mist:       #f3e8ff;
-    --fog:        #faf5ff;
-    --ink:        #1a0a2e;
-    --ink-mid:    #4a3060;
-    --ink-soft:   #7c6490;
-    --white:      #ffffff;
-    --rule:       #e9d5ff;
-    --card:       #ffffff;
-    --serif:      'Cormorant Garamond', Georgia, serif;
-    --sans:       'Syne', system-ui, sans-serif;
-    --mono:       'JetBrains Mono', monospace;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--fog);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  /* ── NOISE TEXTURE OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 3rem;
-    height: 60px;
-    background: rgba(250, 245, 255, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--rule);
-  }
-
-  .nav-mark {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--violet);
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-mark span { color: var(--ink-soft); }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--violet); }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 92vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    padding: 8rem 4rem 6rem 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero-right {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--plum);
-    overflow: hidden;
-  }
-
-  /* geometric pattern on right */
-  .hero-right::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at 30% 50%, rgba(124,58,237,0.4) 0%, transparent 60%),
-      radial-gradient(circle at 80% 20%, rgba(168,85,247,0.3) 0%, transparent 50%),
-      radial-gradient(circle at 60% 80%, rgba(45,10,78,0.8) 0%, transparent 60%);
-  }
-
-  .hero-right::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 30px,
-        rgba(168,85,247,0.05) 30px,
-        rgba(168,85,247,0.05) 31px
-      );
-  }
-
-  .hero-glyph {
-    position: relative;
-    z-index: 1;
-    font-family: var(--serif);
-    font-size: 20rem;
-    font-style: italic;
-    font-weight: 400;
-    color: rgba(216,180,254,0.12);
-    line-height: 1;
-    user-select: none;
-    letter-spacing: -0.05em;
-  }
-
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--mist);
-    border: 1px solid var(--lilac);
-    border-radius: 100px;
-    padding: 6px 16px;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--plum-mid);
-    letter-spacing: 0.05em;
-    margin-bottom: 2rem;
-    width: fit-content;
-  }
-
-  .badge-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--lavender);
-    animation: pulse 2s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
-  }
-
-  .hero-name {
-    font-family: var(--serif);
-    font-size: clamp(3.5rem, 6vw, 5.5rem);
-    font-weight: 600;
-    line-height: 0.95;
-    color: var(--plum);
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-  }
-
-  .hero-name em {
-    font-style: italic;
-    color: var(--violet);
-    display: block;
-  }
-
-  .hero-rule {
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--violet), var(--lavender));
-    border-radius: 2px;
-    margin: 1.5rem 0;
-  }
-
-  .hero-bio {
-    font-size: 16px;
-    color: var(--ink-mid);
-    line-height: 1.8;
-    max-width: 440px;
-    margin-bottom: 2.5rem;
-  }
-
-  .hero-bio strong { color: var(--plum); font-weight: 600; }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.65rem 1.5rem;
-    border-radius: 6px;
-    font-family: var(--sans);
-    font-size: 13px;
-    font-weight: 600;
-    text-decoration: none;
-    letter-spacing: 0.03em;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: var(--violet);
-    color: white;
-    border: 2px solid var(--violet);
-  }
-
-  .btn-primary:hover {
-    background: var(--plum-mid);
-    border-color: var(--plum-mid);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(124,58,237,0.3);
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--ink-mid);
-    border: 2px solid var(--rule);
-  }
-
-  .btn-ghost:hover {
-    border-color: var(--lavender);
-    color: var(--violet);
-    transform: translateY(-1px);
-  }
-
-  /* ── STATS STRIP ── */
-  .stats {
-    background: var(--plum);
-    padding: 2rem 5rem;
-    display: flex;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .stat-item { text-align: center; }
-
-  .stat-number {
-    font-family: var(--serif);
-    font-size: 2.5rem;
-    font-style: italic;
-    color: var(--lilac);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .stat-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(216,180,254,0.6);
-  }
-
-  .stat-divider {
-    width: 1px;
-    height: 40px;
-    background: rgba(216,180,254,0.2);
-  }
-
-  /* ── MAIN CONTENT ── */
-  main {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 3rem 8rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* ── SECTION ── */
-  .section {
-    padding-top: 6rem;
-  }
-
-  .section-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .section-num {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--lavender);
-    letter-spacing: 0.1em;
-  }
-
-  .section-title {
-    font-family: var(--serif);
-    font-size: 2.75rem;
-    font-weight: 600;
-    color: var(--plum);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-  }
-
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-    margin-left: 1rem;
-  }
-
-  /* ── RESEARCH INTERESTS ── */
-  .interests-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-
-  .interest-card {
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-radius: 12px;
-    padding: 2rem;
-    position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .interest-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(124,58,237,0.12);
-  }
-
-  .interest-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--violet), var(--lavender));
-  }
-
-  .interest-icon {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .interest-title {
-    font-family: var(--serif);
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--plum);
-    margin-bottom: 0.5rem;
-  }
-
-  .interest-desc {
-    font-size: 14px;
-    color: var(--ink-soft);
-    line-height: 1.65;
-  }
-
-  .research-pull {
-    background: var(--plum);
-    border-radius: 16px;
-    padding: 2.5rem 3rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .research-pull::before {
-    content: '\201C';
-    position: absolute;
-    top: -1rem;
-    left: 2rem;
-    font-family: var(--serif);
-    font-size: 10rem;
-    color: rgba(216,180,254,0.1);
-    line-height: 1;
-  }
-
-  .research-pull p {
-    font-family: var(--serif);
-    font-size: 1.35rem;
-    font-style: italic;
-    color: var(--lilac);
-    line-height: 1.65;
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-  }
-
-  /* ── PROJECT CARDS ── */
-  .project-card {
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-radius: 16px;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    align-items: start;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .project-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 16px 40px rgba(124,58,237,0.1);
-  }
-
-  .project-num {
-    font-family: var(--serif);
-    font-size: 4rem;
-    font-style: italic;
-    font-weight: 600;
-    color: var(--mist);
-    line-height: 1;
-    user-select: none;
-    padding-top: 0.25rem;
-  }
-
-  .project-title {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--plum);
-    margin-bottom: 0.75rem;
-    line-height: 1.2;
-  }
-
-  .project-year {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--lavender);
-    letter-spacing: 0.08em;
-    margin-bottom: 0.75rem;
-  }
-
-  .project-desc {
-    font-size: 15px;
-    color: var(--ink-mid);
-    line-height: 1.75;
-    margin-bottom: 1.25rem;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .tag {
-    background: var(--mist);
-    color: var(--plum-mid);
-    border: 1px solid var(--rule);
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 3px 10px;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-  }
-
-  .project-links {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .link-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--violet);
-    text-decoration: none;
-    border: 1px solid var(--lilac);
-    padding: 4px 12px;
-    border-radius: 100px;
-    transition: all 0.15s;
-  }
-
-  .link-chip:hover {
-    background: var(--violet);
-    color: white;
-    border-color: var(--violet);
-  }
-
-  /* ── EDUCATION ── */
-  .edu-timeline {
-    position: relative;
-    padding-left: 2.5rem;
-  }
-
-  .edu-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 0;
-    width: 2px;
-    background: linear-gradient(to bottom, var(--violet), var(--lilac), transparent);
-  }
-
-  .edu-item {
-    position: relative;
-    margin-bottom: 2.5rem;
-  }
-
-  .edu-item::before {
-    content: '';
-    position: absolute;
-    left: -2.5rem;
-    top: 6px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--violet);
-    border: 2px solid var(--fog);
-    box-shadow: 0 0 0 3px var(--lilac);
-  }
-
-  .edu-degree {
-    font-family: var(--serif);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--plum);
-    margin-bottom: 2px;
-  }
-
-  .edu-school {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--violet);
-    margin-bottom: 4px;
-  }
-
-  .edu-detail {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--ink-soft);
-    line-height: 1.6;
-  }
-
-  /* ── EXPERIENCE ── */
-  .exp-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .exp-card {
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-radius: 12px;
-    padding: 1.75rem;
-    transition: transform 0.2s;
-  }
-
-  .exp-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(124,58,237,0.08);
-  }
-
-  .exp-role {
-    font-family: var(--serif);
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: var(--plum);
-    margin-bottom: 2px;
-  }
-
-  .exp-org {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--violet);
-    margin-bottom: 4px;
-  }
-
-  .exp-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-soft);
-    margin-bottom: 0.75rem;
-    letter-spacing: 0.05em;
-  }
-
-  .exp-desc {
-    font-size: 13px;
-    color: var(--ink-mid);
-    line-height: 1.65;
-  }
-
-  /* ── SKILLS ── */
-  .skills-wrap {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .skill-group {
-    background: var(--card);
-    border: 1px solid var(--rule);
-    border-radius: 10px;
-    padding: 1.5rem;
-  }
-
-  .skill-group-title {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--lavender);
-    margin-bottom: 1rem;
-  }
-
-  .skill-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  .skill-pill {
-    background: var(--mist);
-    color: var(--plum-mid);
-    font-family: var(--mono);
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 6px;
-    border: 1px solid var(--rule);
-  }
-
-  /* ── CONTACT SECTION ── */
-  .contact-band {
-    background: var(--plum);
-    border-radius: 20px;
-    padding: 4rem;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
-    align-items: center;
-    margin-top: 6rem;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .contact-band::before {
-    content: '';
-    position: absolute;
-    right: -60px;
-    top: -60px;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(124,58,237,0.4), transparent 70%);
-  }
-
-  .contact-title {
-    font-family: var(--serif);
-    font-size: 2.5rem;
-    font-style: italic;
-    color: var(--lilac);
-    margin-bottom: 0.75rem;
-  }
-
-  .contact-sub {
-    font-size: 15px;
-    color: rgba(216,180,254,0.7);
-    max-width: 400px;
-  }
-
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--lilac);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: color 0.15s;
-  }
-
-  .contact-link:hover { color: white; }
-
-  /* ── FOOTER ── */
-  footer {
-    text-align: center;
-    padding: 3rem 2rem 2rem;
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--ink-soft);
-    letter-spacing: 0.05em;
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 5rem 2rem 4rem; }
-    nav { padding: 0 1.5rem; }
-    .nav-links { gap: 1.5rem; }
-    main { padding: 0 1.5rem 5rem; }
-    .stats { padding: 2rem; gap: 2rem; flex-wrap: wrap; }
-    .interests-grid { grid-template-columns: 1fr; }
-    .project-card { grid-template-columns: 1fr; }
-    .project-num { display: none; }
-    .contact-band { grid-template-columns: 1fr; padding: 2.5rem; }
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --deep:      #160a24;
+  --plum:      #2e0d52;
+  --royal:     #5b21b6;
+  --violet:    #7c3aed;
+  --grape:     #9333ea;
+  --lavender:  #c084fc;
+  --lilac:     #e9d5ff;
+  --mist:      #f5f0ff;
+  --cream:     #fdfbff;
+  --ink:       #1a0a2e;
+  --mid:       #52336e;
+  --soft:      #8b6aad;
+  --rule:      #ddd6fe;
+  --serif:     'Playfair Display', Georgia, serif;
+  --sans:      'Outfit', system-ui, sans-serif;
+  --mono:      'Fira Code', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4rem;
+  background: rgba(253,251,255,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--violet);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-logo em { color: var(--soft); font-style: normal; }
+
+.nav-list {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-list a {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--soft);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-list a:hover { color: var(--violet); }
+
+/* ─── HERO ─────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  padding-top: 58px;
+  position: relative;
+}
+
+.hero-content {
+  padding: 7rem 4rem 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--mist);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 5px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--mid);
+  margin-bottom: 2.5rem;
+  width: fit-content;
+  letter-spacing: 0.04em;
+}
+
+.tag-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--grape);
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0.3; }
+}
+
+h1.name {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  color: var(--plum);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.4rem;
+}
+
+h1.name .italic {
+  font-style: italic;
+  font-weight: 700;
+  color: var(--violet);
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.75rem 0;
+}
+
+.hero-divider-line {
+  height: 2px;
+  width: 50px;
+  background: linear-gradient(90deg, var(--violet), transparent);
+  border-radius: 2px;
+}
+
+.hero-divider-text {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--soft);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-bio {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.85;
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.hero-bio strong { color: var(--plum); font-weight: 600; }
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  background: var(--violet);
+  color: white;
+  padding: 0.7rem 1.75rem;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  border: 2px solid var(--violet);
+}
+
+.cta-primary:hover {
+  background: var(--plum);
+  border-color: var(--plum);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(124,58,237,0.25);
+}
+
+.cta-outline {
+  background: transparent;
+  color: var(--mid);
+  padding: 0.7rem 1.75rem;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: all 0.2s;
+  border: 2px solid var(--rule);
+}
+
+.cta-outline:hover {
+  border-color: var(--lavender);
+  color: var(--violet);
+  transform: translateY(-2px);
+}
+
+/* hero right — dark panel */
+.hero-panel {
+  background: var(--deep);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(147,51,234,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 60% 10%, rgba(91,33,182,0.3) 0%, transparent 50%);
+}
+
+.panel-glyph {
+  font-family: var(--serif);
+  font-size: 22rem;
+  font-style: italic;
+  font-weight: 900;
+  color: rgba(192,132,252,0.06);
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+  user-select: none;
+  letter-spacing: -0.06em;
+}
+
+.panel-card {
+  position: absolute;
+  bottom: 3rem;
+  left: 3rem;
+  right: 3rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(192,132,252,0.15);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  z-index: 2;
+  backdrop-filter: blur(8px);
+}
+
+.panel-card-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(192,132,252,0.6);
+  margin-bottom: 0.75rem;
+}
+
+.panel-stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.panel-stat-val {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-style: italic;
+  color: var(--lavender);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.panel-stat-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: rgba(192,132,252,0.5);
+  letter-spacing: 0.05em;
+}
+
+/* ─── MAIN ─────────────────────────────────── */
+main { max-width: 1080px; margin: 0 auto; padding: 0 3rem 8rem; }
+
+/* ─── SECTION HEADER ─────────────────────── */
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+  padding-top: 5rem;
+  border-top: 1px solid var(--rule);
+  margin-top: 5rem;
+}
+
+.sec-header:first-child { border-top: none; }
+
+.sec-n {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--lavender);
+  letter-spacing: 0.1em;
+}
+
+.sec-title {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--plum);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.sec-line { flex: 1; height: 1px; background: var(--rule); margin-left: 1rem; }
+
+/* ─── ABOUT / IDENTITY ───────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 16px;
+  color: var(--mid);
+  line-height: 1.85;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+.about-text p strong { color: var(--plum); font-weight: 600; }
+
+.about-sidebar {
+  background: var(--plum);
+  border-radius: 16px;
+  padding: 2rem;
+  color: var(--lilac);
+}
+
+.sidebar-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(233,213,255,0.5);
+  margin-bottom: 1.25rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  margin-bottom: 0.9rem;
+  color: var(--lilac);
+}
+
+.contact-item a {
+  color: var(--lavender);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.contact-item a:hover { color: white; }
+
+.contact-icon { flex-shrink: 0; margin-top: 2px; }
+
+/* ─── INTERESTS ──────────────────────────── */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.int-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.int-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(124,58,237,0.1);
+}
+
+.int-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--violet), var(--lavender));
+}
+
+.int-icon { font-size: 1.5rem; margin-bottom: 0.75rem; display: block; }
+.int-name { font-size: 14px; font-weight: 600; color: var(--plum); margin-bottom: 0.3rem; }
+.int-desc { font-size: 12px; color: var(--soft); line-height: 1.55; }
+
+/* ─── RESEARCH / PROJECTS ────────────────── */
+.project {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 2.5rem;
+  margin-bottom: 1.75rem;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  align-items: start;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.project::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--violet), var(--lavender));
+}
+
+.project:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(124,58,237,0.08);
+}
+
+.proj-num {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  font-style: italic;
+  font-weight: 900;
+  color: var(--lilac);
+  line-height: 1;
+  text-align: right;
+}
+
+.proj-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--violet);
+  margin-bottom: 0.6rem;
+}
+
+.status-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--grape);
+}
+
+.proj-title {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--plum);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.proj-desc {
+  font-size: 14px;
+  color: var(--mid);
+  line-height: 1.75;
+  font-weight: 300;
+  margin-bottom: 1.25rem;
+}
+
+.proj-desc strong { color: var(--plum); font-weight: 600; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+
+.tag {
+  background: var(--mist);
+  color: var(--mid);
+  border: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.03em;
+}
+
+.proj-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--violet);
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  padding: 5px 14px;
+  border-radius: 100px;
+  transition: all 0.15s;
+}
+
+.proj-link:hover { background: var(--violet); color: white; border-color: var(--violet); }
+
+/* ─── EDUCATION ──────────────────────────── */
+.edu-list { padding-left: 2.5rem; border-left: 2px solid var(--rule); }
+
+.edu-item {
+  position: relative;
+  margin-bottom: 2.5rem;
+  padding-left: 1rem;
+}
+
+.edu-item::before {
+  content: '';
+  position: absolute;
+  left: -2.6rem;
+  top: 5px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--violet);
+  border: 3px solid var(--cream);
+  box-shadow: 0 0 0 2px var(--lavender);
+}
+
+.edu-degree {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--plum);
+  margin-bottom: 2px;
+}
+
+.edu-school { font-size: 14px; font-weight: 600; color: var(--violet); margin-bottom: 4px; }
+
+.edu-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--soft);
+  line-height: 1.7;
+}
+
+.edu-honor {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--mist);
+  border: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--mid);
+  padding: 2px 10px;
+  border-radius: 100px;
+  margin-top: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+/* ─── EXPERIENCE ─────────────────────────── */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.exp-card {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: transform 0.2s;
+}
+
+.exp-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.07); }
+
+.exp-role { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; color: var(--plum); margin-bottom: 2px; }
+.exp-org { font-size: 13px; font-weight: 600; color: var(--violet); margin-bottom: 4px; }
+.exp-date { font-family: var(--mono); font-size: 10px; color: var(--soft); letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+.exp-desc { font-size: 13px; color: var(--mid); line-height: 1.65; font-weight: 300; }
+
+/* ─── SKILLS ─────────────────────────────── */
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.skill-group {
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.skill-group-head {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lavender);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.skill-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.skill-tag {
+  background: var(--mist);
+  color: var(--mid);
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+}
+
+/* ─── COURSEWORK ─────────────────────────── */
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.course-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.9rem 1.25rem;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--mid);
+  font-weight: 400;
+  transition: border-color 0.15s;
+}
+
+.course-item:hover { border-color: var(--lavender); }
+
+.course-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--violet);
+  flex-shrink: 0;
+}
+
+.course-level {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--soft);
+  margin-left: auto;
+  letter-spacing: 0.04em;
+}
+
+/* ─── CONTACT BAND ───────────────────────── */
+.contact-band {
+  background: var(--plum);
+  border-radius: 20px;
+  padding: 4rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-band::after {
+  content: 'reach out';
+  position: absolute;
+  right: -2rem;
+  bottom: -2rem;
+  font-family: var(--serif);
+  font-size: 7rem;
+  font-style: italic;
+  font-weight: 900;
+  color: rgba(192,132,252,0.06);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.contact-title {
+  font-family: var(--serif);
+  font-size: 2.25rem;
+  font-style: italic;
+  color: var(--lilac);
+  margin-bottom: 0.75rem;
+}
+
+.contact-sub { font-size: 15px; color: rgba(233,213,255,0.6); font-weight: 300; max-width: 380px; }
+
+.contact-links-col { display: flex; flex-direction: column; gap: 0.9rem; }
+
+.c-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--lavender);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.c-link:hover { color: white; }
+
+/* ─── FOOTER ─────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 3rem 2rem 2rem;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--soft);
+  letter-spacing: 0.05em;
+}
+
+/* ─── RESPONSIVE ─────────────────────────── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-panel { display: none; }
+  nav { padding: 0 1.5rem; }
+  .nav-list { gap: 1.5rem; }
+  main { padding: 0 1.5rem 5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .interests-grid { grid-template-columns: repeat(2, 1fr); }
+  .exp-grid { grid-template-columns: 1fr; }
+  .skills-container { grid-template-columns: repeat(2, 1fr); }
+  .course-grid { grid-template-columns: 1fr; }
+  .contact-band { grid-template-columns: 1fr; padding: 2.5rem; }
+  .project { grid-template-columns: 1fr; }
+  .proj-num { display: none; }
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-mark">sabrina<span>.benford</span></a>
-  <ul class="nav-links">
+  <a href="#" class="nav-logo">sabrina<em>.benford</em></a>
+  <ul class="nav-list">
+    <li><a href="#about">About</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#education">Education</a></li>
@@ -773,275 +777,372 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-left">
-    <div class="hero-badge">
-      <span class="badge-dot"></span>
-      MS Computer Science · UNL · Class of 2027
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span class="tag-dot"></span>
+      MS Computer Science · UNL · Thesis Track · Spring 2027
     </div>
-    <h1 class="hero-name">
-      Sabrina
-      <em>Benford</em>
+    <h1 class="name">
+      Sabrina<br>
+      <span class="italic">Benford</span>
     </h1>
-    <div class="hero-rule"></div>
+    <div class="hero-divider">
+      <div class="hero-divider-line"></div>
+      <span class="hero-divider-text">Researcher · Educator · Builder</span>
+    </div>
     <p class="hero-bio">
-      I build systems at the intersection of <strong>human-computer interaction</strong>,
-      <strong>AI fairness</strong>, and <strong>educational technology</strong>.
-      My research asks: when AI systems fail real users, how do we know — and how do we fix it?
+      I build AI systems that are <strong>fair, explainable, and honest about what they don't know</strong>.
+      My research spans multimodal AI detection, assistive technology for neurodivergent users,
+      and the intersection of machine learning and CS education.
+      I'm pursuing a <strong>PhD in HCI or AI</strong> to answer the questions my MS raised.
     </p>
-    <div class="hero-actions">
-      <a href="mailto:sabrinaeb286@gmail.com" class="btn btn-primary">Get in touch</a>
-      <a href="https://github.com/SabrinaB286/ai-detection-research" class="btn btn-ghost" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/sabrina-benford-48a8b5329/" class="btn btn-ghost" target="_blank">LinkedIn</a>
+    <div class="hero-ctas">
+      <a href="mailto:sabrinaeb286@gmail.com" class="cta-primary">Get in touch</a>
+      <a href="https://github.com/SabrinaB286" class="cta-outline" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/sabrina-benford-48a8b5329/" class="cta-outline" target="_blank">LinkedIn</a>
+      <a href="https://huggingface.co/spaces/Sab286/ai-content-detector" class="cta-outline" target="_blank">Live Demo</a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="hero-glyph">SB</div>
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat-item">
-    <div class="stat-number">4.0</div>
-    <div class="stat-label">Graduate GPA</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-number">194</div>
-    <div class="stat-label">Corpus Samples</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-number">3</div>
-    <div class="stat-label">Detection Modalities</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-number">4yr</div>
-    <div class="stat-label">Teaching Experience</div>
-  </div>
-  <div class="stat-divider"></div>
-  <div class="stat-item">
-    <div class="stat-number">3.890</div>
-    <div class="stat-label">Undergraduate GPA</div>
+  <div class="hero-panel">
+    <div class="panel-glyph">SB</div>
+    <div class="panel-card">
+      <div class="panel-card-label">At a glance</div>
+      <div class="panel-stats">
+        <div>
+          <div class="panel-stat-val">4.0</div>
+          <div class="panel-stat-lbl">Grad GPA</div>
+        </div>
+        <div>
+          <div class="panel-stat-val">3.89</div>
+          <div class="panel-stat-lbl">UG GPA</div>
+        </div>
+        <div>
+          <div class="panel-stat-val">4yr</div>
+          <div class="panel-stat-lbl">Teaching</div>
+        </div>
+        <div>
+          <div class="panel-stat-val">2+</div>
+          <div class="panel-stat-lbl">Papers</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
 <!-- MAIN -->
 <main>
 
-  <!-- RESEARCH -->
-  <section class="section" id="research">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2 class="section-title">Research</h2>
-      <div class="section-line"></div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="sec-header" style="border-top:none; margin-top:4rem;">
+      <span class="sec-n">00</span>
+      <h2 class="sec-title">About Me</h2>
+      <div class="sec-line"></div>
     </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a first-year MS student in Computer Science at the University of Nebraska–Lincoln on the <strong>Option A thesis track</strong>, planning to graduate Spring 2027. My academic journey started as an undergraduate at UNL where I graduated with a BS in Computer Science, a Minor in Mathematics, and <strong>High Distinction honors</strong> — while simultaneously spending four years as a teaching assistant and learning how students actually learn to code.</p>
+        <p>That teaching experience is what drives my research. I've watched students get falsely accused of AI use by tools that couldn't tell a strong formal writer from a language model. I've watched neurodivergent children locked out of expressive communication because AI systems were never trained on people like them. I build things to fix that.</p>
+        <p>I attended the <strong>CMU IT Lab Summer Security Intensive</strong> in 2025, training in network defense, information security, and cyber intelligence. I'm a founding student representative of UNL's <strong>reactivated Upsilon Pi Epsilon chapter</strong> — the first active CS honor society at UNL in over 20 years. I'm applying to <strong>PhD programs in HCI and AI for Fall 2027</strong> with the goal of becoming a professor and researcher.</p>
+      </div>
+      <div class="about-sidebar">
+        <div class="sidebar-title">Contact & Links</div>
+        <div class="contact-item">
+          <span class="contact-icon">📧</span>
+          <a href="mailto:sabrinaeb286@gmail.com">sabrinaeb286@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          Lincoln, Nebraska
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">💼</span>
+          <a href="https://www.linkedin.com/in/sabrina-benford-48a8b5329/" target="_blank">LinkedIn Profile</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">⌥</span>
+          <a href="https://github.com/SabrinaB286" target="_blank">github.com/SabrinaB286</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">🤗</span>
+          <a href="https://huggingface.co/Sab286" target="_blank">huggingface.co/Sab286</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          +1 (402) 480-3358
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- RESEARCH INTERESTS -->
+  <section id="research">
+    <div class="sec-header">
+      <span class="sec-n">01</span>
+      <h2 class="sec-title">Research Interests</h2>
+      <div class="sec-line"></div>
+    </div>
     <div class="interests-grid">
-      <div class="interest-card">
-        <span class="interest-icon">🤖</span>
-        <h3 class="interest-title">AI Fairness & Detection</h3>
-        <p class="interest-desc">Building detection systems that protect students from false AI accusations, particularly those who write formally, use domain-specific code, or come from non-native English backgrounds.</p>
+      <div class="int-card">
+        <span class="int-icon">🤖</span>
+        <div class="int-name">Artificial Intelligence & ML</div>
+        <div class="int-desc">Multimodal AI systems, transformer fine-tuning, fairness-aware model design, and AI behavior in high-stakes environments.</div>
       </div>
-      <div class="interest-card">
-        <span class="interest-icon">🧠</span>
-        <h3 class="interest-title">Human-Computer Interaction</h3>
-        <p class="interest-desc">Designing interactive systems that center real user needs — including neurodivergent populations and underrepresented groups overlooked by mainstream AI training data.</p>
+      <div class="int-card">
+        <span class="int-icon">🧑‍💻</span>
+        <div class="int-name">Human-Computer Interaction</div>
+        <div class="int-desc">Designing and evaluating interactive systems that center real user needs, especially for neurodivergent and underrepresented populations.</div>
       </div>
-      <div class="interest-card">
-        <span class="interest-icon">📚</span>
-        <h3 class="interest-title">AI in Education</h3>
-        <p class="interest-desc">Studying how AI tutoring tools, detection systems, and learning assistants affect student learning, help-seeking behavior, and academic integrity in CS classrooms.</p>
+      <div class="int-card">
+        <span class="int-icon">📚</span>
+        <div class="int-name">AI in Education & CS Ed</div>
+        <div class="int-desc">How AI detection tools, tutoring systems, and TA programs shape student learning, help-seeking, and academic integrity.</div>
       </div>
-      <div class="interest-card">
-        <span class="interest-icon">👁️</span>
-        <h3 class="interest-title">Assistive Technology</h3>
-        <p class="interest-desc">Building AI-powered communication tools for nonverbal individuals, with focus on emotion recognition and emotionally-aware speech synthesis for neurodivergent children.</p>
+      <div class="int-card">
+        <span class="int-icon">♿</span>
+        <div class="int-name">Assistive Technology</div>
+        <div class="int-desc">AI-powered AAC tools, emotion recognition for nonverbal users, and communication systems designed for neurodivergent children.</div>
       </div>
-    </div>
-
-    <div class="research-pull">
-      <p>I'm interested in the gap between what AI systems are trained to do and what real users actually need — particularly users whose experiences and expressions differ from the populations that shaped the training data.</p>
+      <div class="int-card">
+        <span class="int-icon">🔒</span>
+        <div class="int-name">Cybersecurity & Network Defense</div>
+        <div class="int-desc">Adversarial thinking about system failure modes, information security, and cyber intelligence. CMU IT Lab trained.</div>
+      </div>
+      <div class="int-card">
+        <span class="int-icon">🧬</span>
+        <div class="int-name">Bioinformatics & Systems</div>
+        <div class="int-desc">Computational methods in bioinformatics, information retrieval systems, and internet systems programming.</div>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
-  <section class="section" id="projects">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Projects</h2>
-      <div class="section-line"></div>
+  <section id="projects">
+    <div class="sec-header">
+      <span class="sec-n">02</span>
+      <h2 class="sec-title">Research & Projects</h2>
+      <div class="sec-line"></div>
     </div>
 
-    <div class="project-card">
-      <div class="project-num">01</div>
+    <div class="project">
+      <div class="proj-num">01</div>
       <div>
-        <div class="project-year">MS THESIS · 2026–2027</div>
-        <h3 class="project-title">Multi-Modal AI Content Detection Framework</h3>
-        <p class="project-desc">A unified detection system spanning three modalities — written text, source code, and images — that analyzes forensic signals to distinguish AI-generated content from human-authored work. Features a false positive reduction layer protecting students from erroneous AI accusations, and an assignment context module that detects mismatches between what a teacher assigned and what a student submitted. Deployed as a free public web tool with no login required.</p>
+        <div class="proj-status"><span class="status-dot"></span>MS Thesis · In Progress · 2026–2027</div>
+        <h3 class="proj-title">Multi-Modal AI Content Detection Framework</h3>
+        <p class="proj-desc">A unified detection system spanning <strong>three modalities</strong> — written text, source code, and images — that identifies AI-generated content using forensic signals grounded in the detection literature. Achieves a <strong>zero false positive rate on human-written text</strong> and 89.8% true positive rate on source code. Features a false positive reduction layer protecting students from erroneous accusations, and an <strong>assignment context module</strong> — novel among published systems — detecting mismatches between what a teacher assigned and what was submitted. Fine-tuned RoBERTa and CodeBERT transformers replace the API-dependent engine for free classroom use.</p>
         <div class="tags">
-          <span class="tag">RoBERTa</span>
-          <span class="tag">CodeBERT</span>
-          <span class="tag">Python</span>
-          <span class="tag">HuggingFace</span>
-          <span class="tag">Gradio</span>
-          <span class="tag">NLP</span>
-          <span class="tag">Computer Vision</span>
-          <span class="tag">EdTech</span>
+          <span class="tag">RoBERTa</span><span class="tag">CodeBERT</span><span class="tag">Python</span>
+          <span class="tag">HuggingFace</span><span class="tag">Gradio</span><span class="tag">NLP</span>
+          <span class="tag">Computer Vision</span><span class="tag">EdTech</span><span class="tag">AI Fairness</span>
         </div>
-        <div class="project-links">
-          <a href="https://huggingface.co/spaces/Sab286/ai-content-detector" class="link-chip" target="_blank">🚀 Live Demo</a>
-          <a href="https://github.com/SabrinaB286/ai-detection-research" class="link-chip" target="_blank">⌥ GitHub</a>
-          <a href="https://huggingface.co/Sab286/ai-text-detector-finetuned" class="link-chip" target="_blank">🤗 Models</a>
+        <div class="proj-links">
+          <a href="https://huggingface.co/spaces/Sab286/ai-content-detector" class="proj-link" target="_blank">🚀 Live Tool</a>
+          <a href="https://github.com/SabrinaB286/ai-detection-research" class="proj-link" target="_blank">⌥ GitHub</a>
+          <a href="https://huggingface.co/Sab286/ai-text-detector-finetuned" class="proj-link" target="_blank">🤗 Models</a>
         </div>
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-num">02</div>
+    <div class="project">
+      <div class="proj-num">02</div>
       <div>
-        <div class="project-year">SENIOR DESIGN · 2024–2025</div>
-        <h3 class="project-title">Emotionally-Aware AAC System for Nonverbal Neurodivergent Children</h3>
-        <p class="project-desc">Real-time pipeline detecting emotion from facial expressions using a custom CNN, then modulating text-to-speech prosody so synthesized speech sounds emotionally expressive. Built for nonverbal children who cannot speak. A core challenge was that standard emotion recognition datasets are overwhelmingly neurotypical adults — we made deliberate architectural decisions including collapsing Fear and Disgust into Neutral to reduce harmful misclassification.</p>
+        <div class="proj-status"><span class="status-dot"></span>Under Review · SIGCSE Virtual 2026 · Nov 12–15, 2026</div>
+        <h3 class="proj-title">Neurodivergence and CS Learning: How Cognitive Differences Shape Programming Education</h3>
+        <p class="proj-desc">Collaborative research with a PhD researcher examining how neurodivergent students experience introductory computer science differently — from help-seeking patterns, to how they process feedback, to where traditional pedagogy fails them. Submitted to <strong>SIGCSE Virtual 2026</strong>, the ACM conference on computing education. This work directly informs how CS education tools and TA programs should be redesigned for inclusive learning environments.</p>
         <div class="tags">
-          <span class="tag">TensorFlow</span>
-          <span class="tag">Keras</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">DeepFace</span>
-          <span class="tag">CNN</span>
-          <span class="tag">TTS</span>
-          <span class="tag">Assistive Tech</span>
-          <span class="tag">HCI</span>
+          <span class="tag">CS Education</span><span class="tag">Neurodivergence</span>
+          <span class="tag">HCI</span><span class="tag">SIGCSE</span><span class="tag">Inclusive Design</span>
         </div>
       </div>
     </div>
 
-    <div class="project-card">
-      <div class="project-num">03</div>
+    <div class="project">
+      <div class="proj-num">03</div>
       <div>
-        <div class="project-year">SUMMER 2025</div>
-        <h3 class="project-title">CMU IT Lab — Summer Security Intensive</h3>
-        <p class="project-desc">Completed Carnegie Mellon University's competitive summer program covering Network Defense, Information Security, and Cyber Intelligence. Developed adversarial thinking about system failure and robustness — directly informing my approach to evaluating AI system edge cases and false positive behavior.</p>
+        <div class="proj-status"><span class="status-dot"></span>In Progress · Conference Submission Planned</div>
+        <h3 class="proj-title">Emotionally-Aware AAC System for Nonverbal Neurodivergent Children</h3>
+        <p class="proj-desc">Real-time pipeline detecting emotion from facial expressions using a <strong>custom CNN</strong>, then modulating text-to-speech prosody so synthesized speech sounds emotionally expressive rather than robotic — giving nonverbal children richer communication. A deliberate architectural decision collapsed Fear and Disgust into Neutral to reduce harmful misclassification for users whose expressions don't match neurotypical training data. Includes a <strong>fine-tuning pipeline</strong> for personalization to individual children over time.</p>
         <div class="tags">
-          <span class="tag">Network Defense</span>
-          <span class="tag">Cybersecurity</span>
-          <span class="tag">Cyber Intelligence</span>
-          <span class="tag">Carnegie Mellon</span>
+          <span class="tag">TensorFlow/Keras</span><span class="tag">OpenCV</span><span class="tag">DeepFace</span>
+          <span class="tag">CNN</span><span class="tag">TTS</span><span class="tag">Assistive Tech</span>
+          <span class="tag">AI Fairness</span><span class="tag">HCI</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/SabrinaB286" class="proj-link" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="proj-num">04</div>
+      <div>
+        <div class="proj-status">Summer 2025</div>
+        <h3 class="proj-title">CMU IT Lab — Summer Security Intensive</h3>
+        <p class="proj-desc">Completed <strong>Carnegie Mellon University's</strong> competitive summer program covering Network Defense, Introduction to Information Security, and Introduction to Cyber Intelligence. Developed adversarial thinking about system failure and robustness that directly informs how I approach AI evaluation, false positive analysis, and edge case detection in my research.</p>
+        <div class="tags">
+          <span class="tag">Network Defense</span><span class="tag">InfoSec</span>
+          <span class="tag">Cyber Intelligence</span><span class="tag">Carnegie Mellon</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- EDUCATION -->
-  <section class="section" id="education">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Education</h2>
-      <div class="section-line"></div>
+  <section id="education">
+    <div class="sec-header">
+      <span class="sec-n">03</span>
+      <h2 class="sec-title">Education</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="edu-list">
+      <div class="edu-item">
+        <div class="edu-degree">MS, Computer Science — Thesis Track</div>
+        <div class="edu-school">University of Nebraska–Lincoln</div>
+        <div class="edu-meta">
+          2025–2027 (expected May 2027) · Graduate GPA: 4.000<br>
+          Thesis: Multi-Modal AI Content Detection · Advisor: Prof. Christopher Bohn<br>
+          Founding Student Representative, Upsilon Pi Epsilon (UPE) — reactivated 2026
+        </div>
+        <span class="edu-honor">🎓 4.0 Graduate GPA</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">BS, Computer Science</div>
+        <div class="edu-school">University of Nebraska–Lincoln · Minor: Mathematics</div>
+        <div class="edu-meta">
+          Conferred December 2025 · GPA: 3.890<br>
+          Dean's List every semester · Accelerated MS pathway
+        </div>
+        <span class="edu-honor">⭐ High Distinction Honors</span>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">Summer Security Intensive</div>
+        <div class="edu-school">Carnegie Mellon University — IT Lab</div>
+        <div class="edu-meta">Summer 2025 · Network Defense · Information Security · Cyber Intelligence · All A grades</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">High School Diploma</div>
+        <div class="edu-school">Lincoln East High School</div>
+        <div class="edu-meta">Lincoln, Nebraska</div>
+      </div>
     </div>
 
-    <div class="edu-timeline">
-      <div class="edu-item">
-        <p class="edu-degree">MS, Computer Science</p>
-        <p class="edu-school">University of Nebraska–Lincoln</p>
-        <p class="edu-detail">2025–2027 (expected May 2027) · Graduate GPA: 4.0<br>Thesis: Multi-Modal AI Content Detection · Advisor: Prof. Christopher Bohn<br>Founding President, UPE Chapter (reactivating 2026)</p>
-      </div>
-      <div class="edu-item">
-        <p class="edu-degree">BS, Computer Science — High Distinction</p>
-        <p class="edu-school">University of Nebraska–Lincoln · Minor: Mathematics</p>
-        <p class="edu-detail">Conferred December 2025 · GPA: 3.890<br>Dean's List every semester · Accelerated MS pathway</p>
-      </div>
-      <div class="edu-item">
-        <p class="edu-degree">Summer Security Intensive</p>
-        <p class="edu-school">Carnegie Mellon University — IT Lab</p>
-        <p class="edu-detail">Summer 2025 · Network Defense · Information Security · Cyber Intelligence</p>
-      </div>
+    <!-- COURSEWORK -->
+    <h3 style="font-family:var(--serif);font-size:1.4rem;color:var(--plum);margin:2.5rem 0 1.25rem;font-weight:700;">Graduate Coursework</h3>
+    <div class="course-grid">
+      <div class="course-item"><span class="course-dot"></span>Information Retrieval Systems<span class="course-level">CSCE 810</span></div>
+      <div class="course-item"><span class="course-dot"></span>Data & Network Security<span class="course-level">CSCE 863</span></div>
+      <div class="course-item"><span class="course-dot"></span>Internet Systems & Programming<span class="course-level">CSCE 864</span></div>
+      <div class="course-item"><span class="course-dot"></span>Master's Thesis Research<span class="course-level">CSCE 899</span></div>
+      <div class="course-item"><span class="course-dot"></span>Data Modeling & System Dev<span class="course-level">CSCE 811</span></div>
+      <div class="course-item"><span class="course-dot"></span>Human-Robot Interaction<span class="course-level">CSCE 854</span></div>
+      <div class="course-item"><span class="course-dot"></span>Computational Methods: Bioinformatics<span class="course-level">CSCE 871</span></div>
+      <div class="course-item"><span class="course-dot"></span>Graduate Seminar<span class="course-level">CSCE 990</span></div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-  <section class="section" id="experience">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Experience</h2>
-      <div class="section-line"></div>
+  <section id="experience">
+    <div class="sec-header">
+      <span class="sec-n">04</span>
+      <h2 class="sec-title">Teaching & Experience</h2>
+      <div class="sec-line"></div>
     </div>
-
     <div class="exp-grid">
       <div class="exp-card">
-        <p class="exp-role">Senior Leader, Learning Assistant Program</p>
-        <p class="exp-org">University of Nebraska–Lincoln</p>
-        <p class="exp-date">JAN 2022 – DEC 2025</p>
-        <p class="exp-desc">Managed undergraduate TAs across multiple sections of introductory CS. Designed coordination systems, ran weekly alignment meetings, and provided one-on-one mentorship to new TAs.</p>
+        <div class="exp-role">Senior Leader, Learning Assistant Program</div>
+        <div class="exp-org">University of Nebraska–Lincoln</div>
+        <div class="exp-date">JAN 2022 – DEC 2025</div>
+        <div class="exp-desc">Managed undergraduate TAs across multiple sections of introductory CS. Designed coordination systems, ran weekly alignment meetings, and provided one-on-one mentorship to new TAs. Observed and studied how students decide when to seek help from a person versus an AI tool.</div>
       </div>
       <div class="exp-card">
-        <p class="exp-role">Teaching Assistant — CSCE 231 & 428</p>
-        <p class="exp-org">University of Nebraska–Lincoln</p>
-        <p class="exp-date">AUG 2024 – PRESENT</p>
-        <p class="exp-desc">Led lab and recitation sections, assessed student work, and provided guidance on course material for Computer Systems Engineering and upper-division CS courses.</p>
+        <div class="exp-role">Teaching Assistant — CSCE 231 & 428</div>
+        <div class="exp-org">University of Nebraska–Lincoln</div>
+        <div class="exp-date">AUG 2024 – PRESENT</div>
+        <div class="exp-desc">Led lab and recitation sections for Computer Systems Engineering and upper-division CS. Assessed student work, delivered course material, and provided guided office hours support across large multi-section courses.</div>
       </div>
       <div class="exp-card">
-        <p class="exp-role">CS Industry Internship</p>
-        <p class="exp-org">Industry — CSCE 495</p>
-        <p class="exp-date">SUMMER 2025</p>
-        <p class="exp-desc">Applied CS skills in a professional industry context. Graded A.</p>
+        <div class="exp-role">Founding Student Representative</div>
+        <div class="exp-org">Upsilon Pi Epsilon — UNL Chapter</div>
+        <div class="exp-date">2026 – PRESENT</div>
+        <div class="exp-desc">Reactivated UNL's UPE chapter after 20+ years of dormancy by coordinating with the UPE Executive Director, department chair, and faculty advisor. Now listed in UPE national files as student representative, organizing the first induction ceremony for Fall 2026.</div>
+      </div>
+      <div class="exp-card">
+        <div class="exp-role">CS Industry Internship</div>
+        <div class="exp-org">Industry — CSCE 495</div>
+        <div class="exp-date">SUMMER 2025</div>
+        <div class="exp-desc">Applied CS skills in a professional industry setting. Completed with an A grade under UNL's experiential learning credit program.</div>
       </div>
     </div>
   </section>
 
   <!-- SKILLS -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Skills</h2>
-      <div class="section-line"></div>
+  <section>
+    <div class="sec-header">
+      <span class="sec-n">05</span>
+      <h2 class="sec-title">Technical Skills</h2>
+      <div class="sec-line"></div>
     </div>
-    <div class="skills-wrap">
+    <div class="skills-container">
       <div class="skill-group">
-        <div class="skill-group-title">Languages</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Python</span>
-          <span class="skill-pill">C</span>
-          <span class="skill-pill">JavaScript</span>
-          <span class="skill-pill">HTML</span>
-          <span class="skill-pill">LaTeX</span>
+        <div class="skill-group-head">Languages</div>
+        <div class="skill-list">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">C</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML/CSS</span>
+          <span class="skill-tag">LaTeX</span>
+          <span class="skill-tag">Java</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">ML / NLP</div>
-        <div class="skill-pills">
-          <span class="skill-pill">TensorFlow</span>
-          <span class="skill-pill">Keras</span>
-          <span class="skill-pill">RoBERTa</span>
-          <span class="skill-pill">CodeBERT</span>
-          <span class="skill-pill">HuggingFace</span>
+        <div class="skill-group-head">ML / NLP / AI</div>
+        <div class="skill-list">
+          <span class="skill-tag">TensorFlow</span>
+          <span class="skill-tag">Keras</span>
+          <span class="skill-tag">RoBERTa</span>
+          <span class="skill-tag">CodeBERT</span>
+          <span class="skill-tag">HuggingFace</span>
+          <span class="skill-tag">PyQt6</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Vision</div>
-        <div class="skill-pills">
-          <span class="skill-pill">OpenCV</span>
-          <span class="skill-pill">DeepFace</span>
-          <span class="skill-pill">PyQt6</span>
+        <div class="skill-group-head">Computer Vision</div>
+        <div class="skill-list">
+          <span class="skill-tag">OpenCV</span>
+          <span class="skill-tag">DeepFace</span>
+          <span class="skill-tag">CNN Design</span>
+          <span class="skill-tag">Image Analysis</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Frontend</div>
-        <div class="skill-pills">
-          <span class="skill-pill">React</span>
-          <span class="skill-pill">CSS</span>
-          <span class="skill-pill">Gradio</span>
-          <span class="skill-pill">GitHub</span>
+        <div class="skill-group-head">Frontend & Tools</div>
+        <div class="skill-list">
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Gradio</span>
+          <span class="skill-tag">GitHub</span>
+          <span class="skill-tag">PowerPoint</span>
+          <span class="skill-tag">Slack</span>
         </div>
       </div>
       <div class="skill-group">
-        <div class="skill-group-title">Systems</div>
-        <div class="skill-pills">
-          <span class="skill-pill">Linux</span>
-          <span class="skill-pill">Network Defense</span>
-          <span class="skill-pill">OS Principles</span>
+        <div class="skill-group-head">Systems & Security</div>
+        <div class="skill-list">
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Network Defense</span>
+          <span class="skill-tag">InfoSec</span>
+          <span class="skill-tag">ProVerif</span>
+          <span class="skill-tag">OS Principles</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-head">Research Skills</div>
+        <div class="skill-list">
+          <span class="skill-tag">Academic Writing</span>
+          <span class="skill-tag">Data Analysis</span>
+          <span class="skill-tag">LaTeX</span>
+          <span class="skill-tag">Literature Review</span>
+          <span class="skill-tag">Corpus Design</span>
         </div>
       </div>
     </div>
@@ -1051,28 +1152,21 @@
   <div class="contact-band" id="contact">
     <div>
       <h2 class="contact-title">Let's connect.</h2>
-      <p class="contact-sub">I'm actively seeking research collaborations and PhD opportunities for Fall 2027. Always happy to talk HCI, AI fairness, or educational technology.</p>
+      <p class="contact-sub">I'm actively seeking PhD opportunities for Fall 2027 and research collaborations in HCI, AI fairness, and CS education. Always happy to talk.</p>
     </div>
-    <div class="contact-links">
-      <a href="mailto:sabrinaeb286@gmail.com" class="contact-link">
-        📧 sabrinaeb286@gmail.com
-      </a>
-      <a href="https://www.linkedin.com/in/sabrina-benford-48a8b5329/" class="contact-link" target="_blank">
-        💼 LinkedIn
-      </a>
-      <a href="https://github.com/SabrinaB286" class="contact-link" target="_blank">
-        ⌥ GitHub
-      </a>
-      <a href="https://scholar.google.com" class="contact-link" target="_blank">
-        🎓 Google Scholar
-      </a>
+    <div class="contact-links-col">
+      <a href="mailto:sabrinaeb286@gmail.com" class="c-link">📧 sabrinaeb286@gmail.com</a>
+      <a href="tel:+14024803358" class="c-link">📞 (402) 480-3358</a>
+      <a href="https://www.linkedin.com/in/sabrina-benford-48a8b5329/" class="c-link" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com/SabrinaB286" class="c-link" target="_blank">⌥ GitHub</a>
+      <a href="https://huggingface.co/spaces/Sab286/ai-content-detector" class="c-link" target="_blank">🚀 Live Research Tool</a>
     </div>
   </div>
 
 </main>
 
 <footer>
-  Sabrina E. Benford · Lincoln, Nebraska · sabrinaeb286@gmail.com · Updated June 2026
+  Sabrina E. Benford · MS Computer Science · University of Nebraska–Lincoln · Lincoln, NE · Updated June 2026
 </footer>
 
 </body>
